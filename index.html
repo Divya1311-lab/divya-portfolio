@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Divya — Web Developer & Designer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #0B1220;
+    --bg-card: #101B2E;
+    --grid-line: rgba(127,168,217,0.14);
+    --border: rgba(127,168,217,0.28);
+    --text: #E8EEF7;
+    --text-soft: #8FA9C9;
+    --accent: #F2B705;
+    --accent2: #FF6B6B;
+    --accent-soft: rgba(242,183,5,0.14);
+    --display: 'Space Grotesk', sans-serif;
+    --body: 'Inter', sans-serif;
+    --mono: 'JetBrains Mono', monospace;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{
+    background:
+      linear-gradient(var(--grid-line) 1px, transparent 1px) 0 0/48px 48px,
+      linear-gradient(90deg, var(--grid-line) 1px, transparent 1px) 0 0/48px 48px,
+      var(--bg);
+    color:var(--text);
+    font-family:var(--body);
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+  a{color:inherit;}
+  .wrap{max-width:1000px;margin:0 auto;padding:0 24px;}
+
+  /* NAV */
+  nav{display:flex;justify-content:space-between;align-items:center;padding:28px 0;}
+  .logo{font-family:var(--mono);font-size:14px;letter-spacing:1px;color:var(--accent);}
+  .logo span{color:var(--text-soft);}
+  nav ul{display:flex;gap:28px;list-style:none;font-family:var(--mono);font-size:13px;color:var(--text-soft);}
+  nav a{text-decoration:none;}
+  nav a:hover{color:var(--accent);}
+
+  /* HERO */
+  .hero{padding:56px 0 80px;}
+  .status-pill{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:12px;color:#7CF29C;background:rgba(124,242,156,0.08);border:1px solid rgba(124,242,156,0.3);padding:7px 14px;border-radius:999px;margin-bottom:24px;}
+  .pulse{width:7px;height:7px;border-radius:50%;background:#7CF29C;box-shadow:0 0 0 0 rgba(124,242,156,.6);animation:pulse 2s infinite;}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(124,242,156,.6);}70%{box-shadow:0 0 0 8px rgba(124,242,156,0);}100%{box-shadow:0 0 0 0 rgba(124,242,156,0);}}
+
+  h1{font-family:var(--display);font-size:clamp(38px,6.5vw,68px);font-weight:700;line-height:1.05;margin-bottom:20px;}
+  h1 .grad{background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent;}
+  .lede{font-size:18px;color:var(--text-soft);max-width:540px;margin-bottom:36px;}
+  .cta-row{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:64px;}
+  .btn{font-family:var(--mono);font-size:13px;padding:14px 26px;border-radius:4px;text-decoration:none;display:inline-block;transition:.2s;}
+  .btn-primary{background:var(--accent);color:#0B1220;font-weight:600;box-shadow:0 0 0 0 rgba(242,183,5,.5);}
+  .btn-primary:hover{background:#ffce33;transform:translateY(-2px);box-shadow:0 8px 24px rgba(242,183,5,.35);}
+  .btn-ghost{border:1px solid var(--border);color:var(--text);}
+  .btn-ghost:hover{border-color:var(--accent);color:var(--accent);}
+
+  /* Browser chrome blueprint mockup */
+  .mockup{position:relative;border:1px solid var(--border);border-radius:8px;background:var(--bg-card);overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.4);}
+  .mockup-bar{display:flex;align-items:center;gap:8px;padding:12px 16px;border-bottom:1px solid var(--border);}
+  .dot{width:9px;height:9px;border-radius:50%;background:var(--border);}
+  .mockup-url{font-family:var(--mono);font-size:11px;color:var(--text-soft);margin-left:10px;border:1px solid var(--border);padding:3px 10px;border-radius:3px;}
+  .mockup-body{padding:36px;position:relative;min-height:220px;}
+  .dim{position:absolute;font-family:var(--mono);font-size:10px;color:var(--accent);}
+  .blueprint-block{border:1px dashed var(--border);border-radius:3px;padding:14px;margin-bottom:14px;transition:.2s;}
+  .blueprint-block:hover{border-color:var(--accent);background:var(--accent-soft);}
+  .blueprint-block .tag{font-family:var(--mono);font-size:10px;color:var(--text-soft);text-transform:uppercase;letter-spacing:1px;}
+  .bracket{position:absolute;width:16px;height:16px;border:2px solid var(--accent);opacity:.6;}
+  .bracket.tl{top:8px;left:8px;border-right:none;border-bottom:none;}
+  .bracket.br{bottom:8px;right:8px;border-left:none;border-top:none;}
+
+  /* SECTIONS */
+  section{padding:64px 0;border-top:1px solid var(--grid-line);}
+  .section-head{display:flex;align-items:baseline;gap:14px;margin-bottom:36px;}
+  .section-num{font-family:var(--mono);color:var(--accent);font-size:13px;}
+  h2{font-family:var(--display);font-size:28px;font-weight:600;}
+
+  /* ABOUT */
+  .about-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:48px;align-items:start;}
+  .about-grid p{color:var(--text-soft);margin-bottom:14px;}
+  .about-grid p strong{color:var(--text);}
+  .fact-list{border:1px solid var(--border);border-radius:4px;overflow:hidden;}
+  .fact{display:flex;justify-content:space-between;padding:14px 18px;font-size:14px;border-bottom:1px solid var(--grid-line);}
+  .fact:last-child{border-bottom:none;}
+  .fact span:first-child{font-family:var(--mono);color:var(--text-soft);font-size:12px;}
+
+  /* SKILLS */
+  .skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;}
+  .skill-card{border:1px solid var(--border);border-radius:4px;padding:20px;background:var(--bg-card);transition:.2s;}
+  .skill-card:hover{border-color:var(--accent);transform:translateY(-3px);}
+  .skill-card .tag{font-family:var(--mono);font-size:11px;color:var(--accent);margin-bottom:8px;display:block;}
+  .skill-card h3{font-family:var(--display);font-size:17px;margin-bottom:6px;}
+  .skill-card p{font-size:13px;color:var(--text-soft);}
+
+  /* PROJECTS */
+  .project{border:1px solid var(--border);border-radius:6px;background:var(--bg-card);margin-bottom:24px;overflow:hidden;transition:.2s;}
+  .project:hover{border-color:var(--accent);}
+  .project-head{display:flex;justify-content:space-between;align-items:center;padding:18px 24px;border-bottom:1px solid var(--grid-line);flex-wrap:wrap;gap:10px;}
+  .project-head h3{font-family:var(--display);font-size:19px;}
+  .project-head .stack{font-family:var(--mono);font-size:11px;color:var(--accent);}
+  .project-body{padding:20px 24px;}
+  .project-body p{color:var(--text-soft);font-size:14px;margin-bottom:14px;}
+  .project-link{font-family:var(--mono);font-size:12px;color:var(--accent);text-decoration:none;border-bottom:1px dashed var(--accent);}
+  .placeholder{color:#ffce33;font-style:italic;}
+
+  /* PRICING */
+  .pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;}
+  .price-card{border:1px solid var(--border);border-radius:4px;padding:24px;background:var(--bg-card);transition:.2s;}
+  .price-card:hover{border-color:var(--accent);}
+  .price-card .tag{font-family:var(--mono);font-size:11px;color:var(--text-soft);text-transform:uppercase;letter-spacing:1px;}
+  .price-card .amount{font-family:var(--display);font-size:26px;color:var(--accent);margin:10px 0;}
+  .price-card p{font-size:13px;color:var(--text-soft);}
+
+  /* CONTACT */
+  .contact-box{border:1px solid var(--border);border-radius:6px;padding:40px;text-align:center;background:var(--bg-card);position:relative;overflow:hidden;}
+  .contact-box::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle,rgba(242,183,5,0.06) 0%,transparent 60%);}
+  .contact-box h2{margin-bottom:12px;position:relative;}
+  .contact-box p{color:var(--text-soft);margin-bottom:24px;position:relative;}
+  .contact-links{display:flex;gap:24px;justify-content:center;flex-wrap:wrap;font-family:var(--mono);font-size:13px;position:relative;}
+  .contact-links a{transition:.2s;}
+  .contact-links a:hover{color:var(--accent);}
+
+  footer{padding:32px 0;text-align:center;font-family:var(--mono);font-size:11px;color:var(--text-soft);border-top:1px solid var(--grid-line);}
+
+  @media(max-width:720px){
+    .about-grid{grid-template-columns:1fr;}
+    nav ul{gap:16px;font-size:11px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <nav>
+    <div class="logo">DIVYA<span>.dev</span></div>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#work">Work</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <div class="hero">
+    <div class="status-pill"><span class="pulse"></span>Available for freelance work</div>
+    <h1>I build pages<br>that <span class="grad">convert</span>,<br>not just look nice.</h1>
+    <p class="lede">Freelance web developer &amp; designer in Surat — responsive websites and landing pages, hand-coded in HTML/CSS or built visually in WordPress + Elementor. Clean, fast, no bloat.</p>
+    <div class="cta-row">
+      <a href="#contact" class="btn btn-primary">Start a project →</a>
+      <a href="#work" class="btn btn-ghost">See my work</a>
+    </div>
+
+  <section id="about">
+    <div class="section-head"><span class="section-num">01</span><h2>About</h2></div>
+    <div class="about-grid">
+      <div>
+        <p><strong>I'm Divya</strong>, a web developer and designer based in Surat, Gujarat. I hold a BCA from Wadia Women's College, and I've spent the last stretch building real, working sites — not tutorials — for local businesses and my own projects.</p>
+        <p>I work both sides of the fence: I can build fast in a drag-and-drop editor like Elementor, and I can open the hood and write clean HTML/CSS when a template can't do what a client needs.</p>
+        <p><span class="placeholder">Whether it's a WordPress site, a landing page, or a full website build, I enjoy taking a client's idea and turning it into something that actually works — especially for local businesses, cafés, and health & wellness brands.</span></p>
+      </div>
+      <div class="fact-list">
+        <div class="fact"><span>LOCATION</span><span>Surat, Gujarat, IN</span></div>
+        <div class="fact"><span>EDUCATION</span><span>BCA — Wadia Women's College</span></div>
+        <div class="fact"><span>TOOLS</span><span>Elementor, WordPress, HTML/CSS</span></div>
+        <div class="fact"><span>AVAILABLE FOR</span><span>Freelance / Part-time</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="section-head"><span class="section-num">02</span><h2>Skills</h2></div>
+    <div class="skills-grid">
+      <div class="skill-card"><span class="tag">CODE</span><h3>HTML &amp; CSS</h3><p>Hand-coded, responsive pages built from scratch — full control over layout and performance.</p></div>
+      <div class="skill-card"><span class="tag">BUILDER</span><h3>WordPress + Elementor</h3><p>Fast, visual page building for clients who need to edit content themselves later.</p></div>
+      <div class="skill-card"><span class="tag">STRUCTURE</span><h3>Responsive Design</h3><p>Every page built and checked for desktop, tablet, and mobile.</p></div>
+      <div class="skill-card"><span class="tag">SUPPORT</span><h3>Data Entry &amp; Content</h3><p>Accurate, organized content entry and website upkeep.</p></div>
+    </div>
+  </section>
+
+  <section id="work">
+    <div class="section-head"><span class="section-num">03</span><h2>Selected Work</h2></div>
+
+    <div class="project">
+      <div class="project-head">
+        <h3>Unicorn Cafe &amp; Restro</h3>
+        <span class="stack">HTML · CSS</span>
+      </div>
+      <div class="project-body">
+        <p>A complete single-file website built for a café in Surat — menu, ambience, and contact info in a clean, modern layout, built as a spec project to pitch to the owner.</p>
+        <a class="project-link" href="https://cafe-unicorn-menu.preview.emergentagent.com/" target="_blank" rel="noopener">View live site →</a>
+      </div>
+    </div>
+
+    <div class="project">
+      <div class="project-head">
+        <h3>myilaaz — Health Magazine Platform</h3>
+        <span class="stack">WordPress · Elementor</span>
+      </div>
+      <div class="project-body">
+        <p>A health and wellness magazine site built in WordPress + Elementor, with digital flipbook editions, planned multilingual support, and dynamic QR codes.</p>
+        <a class="project-link" href="https://myilaaz.com" target="_blank" rel="noopener">View live site →</a>
+      </div>
+    </div>
+
+    <div class="project">
+      <div class="project-head">
+        <h3 class="placeholder">[Your next project]</h3>
+        <span class="stack">—</span>
+      </div>
+      <div class="project-body">
+        <p class="placeholder">Every landing page you build for a client can slot in here. Keep this section growing — it's your strongest sales tool.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="pricing">
+    <div class="section-head"><span class="section-num">04</span><h2>Pricing</h2></div>
+    <div class="pricing-grid">
+      <div class="price-card">
+        <span class="tag">Landing Page</span>
+        <div class="amount">₹2,000–4,000</div>
+        <p>Single page, built in Elementor or coded, responsive, up to 3 revisions.</p>
+      </div>
+      <div class="price-card">
+        <span class="tag">Full Website</span>
+        <div class="amount">₹6,000–15,000</div>
+        <p>Multi-page site with menu/services, contact form, and mobile optimization.</p>
+      </div>
+      <div class="price-card">
+        <span class="tag">Hourly Work</span>
+        <div class="amount">₹300–400/hr</div>
+        <p>Edits, content updates, or ongoing small tasks.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="contact-box">
+      <h2>Let's build something.</h2>
+      <p>Have a project in mind? Get in touch and I'll get back within a day.</p>
+      <div class="contact-links">
+        <a href="mailto:divyathakkar1113@gmail.com" class="placeholder">divyathakkar1113@gmail.com</a>
+        <a href="tel:8320959110" class="placeholder">8320959110</a>
+        <a href="#" class="placeholder">https://www.linkedin.com/in/divya-thakkar-7a76b5301?utm_source=share_via&utm_content=profile&utm_medium=member_android</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>Built by Divya · Surat, India</footer>
+</div>
+
+</body>
+</html>
